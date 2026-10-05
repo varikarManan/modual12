@@ -37,3 +37,45 @@ spec:
 
         ports:
         - containerPort: 3000
+
+        ---
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: canary-v2
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: canary-demo
+      version: v2
+
+  template:
+
+    metadata:
+      labels:
+        app: canary-demo
+        version: v2
+
+    spec:
+
+      containers:
+
+      - name: app
+
+        image: manan0077/devops_mode_12:6
+
+        env:
+
+        - name: VERSION
+          value: "v2"
+
+        - name: FEATURE_ENABLED
+          value: "true"
+
+        ports:
+        - containerPort: 3000
