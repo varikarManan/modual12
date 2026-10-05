@@ -1,102 +1,102 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
 
-metadata:
-  name: canary-v1
+# metadata:
+#   name: canary-v1
 
-spec:
-  replicas: 9
+# spec:
+#   replicas: 9
 
-  selector:
-    matchLabels:
-      app: canary-demo
-      version: v1
+#   selector:
+#     matchLabels:
+#       app: canary-demo
+#       version: v1
 
-  template:
+#   template:
 
-    metadata:
-      labels:
-        app: canary-demo
-        version: v1
+#     metadata:
+#       labels:
+#         app: canary-demo
+#         version: v1
 
-    spec:
+#     spec:
 
-      containers:
+#       containers:
 
-      - name: app
+#       - name: app
 
-        image: manan0077/devops_mode_12:5
+#         image: manan0077/devops_mode_12:5
 
-        env:
+#         env:
 
-        - name: VERSION
-          value: "v1"
+#         - name: VERSION
+#           value: "v1"
 
-        - name: FEATURE_ENABLED
-          value: "false"
+#         - name: FEATURE_ENABLED
+#           value: "false"
 
-        ports:
-        - containerPort: 3000
+#         ports:
+#         - containerPort: 3000
 
-        ---
+#         ---
 
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
 
-metadata:
-  name: canary-v2
+# metadata:
+#   name: canary-v2
 
-spec:
-  replicas: 1
+# spec:
+#   replicas: 1
 
-  selector:
-    matchLabels:
-      app: canary-demo
-      version: v2
+#   selector:
+#     matchLabels:
+#       app: canary-demo
+#       version: v2
 
-  template:
+#   template:
 
-    metadata:
-      labels:
-        app: canary-demo
-        version: v2
+#     metadata:
+#       labels:
+#         app: canary-demo
+#         version: v2
 
-    spec:
+#     spec:
 
-      containers:
+#       containers:
 
-      - name: app
+#       - name: app
 
-        image: manan0077/devops_mode_12:6
+#         image: manan0077/devops_mode_12:6
 
-        env:
+#         env:
 
-        - name: VERSION
-          value: "v2"
+#         - name: VERSION
+#           value: "v2"
 
-        - name: FEATURE_ENABLED
-          value: "true"
+#         - name: FEATURE_ENABLED
+#           value: "true"
 
-        ports:
-        - containerPort: 3000
+#         ports:
+#         - containerPort: 3000
 
-        ---
+#         ---
 
-apiVersion: v1
-kind: Service
+# apiVersion: v1
+# kind: Service
 
-metadata:
-  name: canary-service
+# metadata:
+#   name: canary-service
 
-spec:
+# spec:
 
-  type: NodePort
+#   type: NodePort
 
-  selector:
-    app: canary-demo
+#   selector:
+#     app: canary-demo
 
-  ports:
+#   ports:
 
-  - port: 3000
-    targetPort: 3000
-    nodePort: 30081
+#   - port: 3000
+#     targetPort: 3000
+#     nodePort: 30081
