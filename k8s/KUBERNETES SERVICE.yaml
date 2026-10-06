@@ -11,7 +11,7 @@ spec:
 
   selector:
     app: devops-demo
-    version: green
+    version: blue
 
   ports:
   - port: 3000
