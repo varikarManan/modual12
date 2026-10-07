@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: devops-demo
-      version: blue
+      version: green
 
   template:
     metadata:
