@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: devops-blue
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: devops-demo
+      version: blue
+
+  template:
+    metadata:
+      labels:
+        app: devops-demo
+        version: blue
+
+    spec:
+      containers:
+      - name: devops-demo
+
+        image: manan0077/devops_mode_12:5
+
+        ports:
+        - containerPort: 3000
+
+        env:
+        - name: VERSION
+          value: "v1"
+
+        - name: FEATURE_ENABLED
+          value: "false"
+
+          ---
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: devops-green
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: devops-demo
+      version: green
+
+  template:
+    metadata:
+      labels:
+        app: devops-demo
+        version: green
+
+    spec:
+      containers:
+      - name: devops-demo
+
+        image: manan0077/devops_mode_12:6
+
+        ports:
+        - containerPort: 3000
+
+        env:
+        - name: VERSION
+          value: "v2"
+
+        - name: FEATURE_ENABLED
+          value: "true"
+
+          ---
+
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: devops-demo-service
+
+spec:
+  type: NodePort
+
+  selector:
+    app: devops-demo
+    version: blue
+
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30080
