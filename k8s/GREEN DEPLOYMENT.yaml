@@ -24,7 +24,7 @@ spec:
       containers:
       - name: devops-demo
 
-        image: manan0077/devops_mode_12:5
+        image: manan0077/devops_mode_12:2
 
         ports:
         - containerPort: 3000
