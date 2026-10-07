@@ -1,4 +1,4 @@
-apiVersion: apps/v1
++apiVersion: apps/v1
 kind: Deployment
 
 metadata:
@@ -85,7 +85,7 @@ spec:
 
   selector:
     app: devops-demo
-    version: blue
+    version: green
 
   ports:
   - port: 3000
